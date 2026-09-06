@@ -1,8 +1,11 @@
 #include <iostream>
-// TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+#include <cctype>
 using namespace std;
+
+string cadena;
 int nodo = 1;
-int indice = 0; //Indice de cadena
+int indice = -1; //Indice de cadena
+bool FDC = false;
 char abc[] =
 {
     'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
@@ -16,31 +19,56 @@ string palabrasReservadas[] =
 {
     "if","while","do","char","string","int","bool","switch", "for","return","false","true","cout","cin"
 };
-bool buscarLetra(string cadena) { //busca si el caracter apuntado por el indice es una palabra permitida
-    for (char i : abc) {
-        if (cadena[indice] == i) {
-            return  true;
+int nodosInaceptable[] = {1,8,13};
+int nodosEnteros[] = {4,7,27};//Conflicto entre los enteros y reales con los nodos 7 y 27
+int nodosReales[] = {6,7,27};
+int nodosVariables[] = {2,3};
+int nodosSignoSimple[] = {17,25,15,20,18,5,9,23};
+int nodosSignoCompuesto[] = {26,16,14,12,22,21,10,11,24};
+int nodosComentario[] = {19};
+bool buscarLetra() { //busca si el caracter apuntado por el indice es una palabra permitida
+    try {
+        for (char c : abc) {
+            if (cadena.at(indice) == c) {
+                return  true;
+            }
         }
+        return false;
+    }catch (const out_of_range& e) {
+        FDC = true;
     }
-    return false;
 }
 
 int main() {
-    string cadena;
     cout << "Inserte cadena: ";
     cin >> cadena;
 
-    bool FDC = false;
-
     do {
-    switch (nodo) {
-        case 1:
-            if (buscarLetra(cadena)) {
-                nodo = 2;
-                FDC = true;
+        indice++;
+        try {
+            switch (nodo) {
+                case 1:
+                    if (buscarLetra()) {
+                        nodo = 2;
+                    }
+                    break;
+                case 2:
+                    if (isdigit(cadena.at(indice))) {
+                        nodo = 3;
+                    }else if (cadena.at(indice) != '_' && !buscarLetra()) {
+                        //Llamar a funcion de errores o solo poner el error
+                    }
+                    break;
+                case 3:
+                    if (!isdigit(cadena.at(indice))) {
+                        //Error
+                    }
+                    break;
             }
-            break;
-    }
+        }catch (const out_of_range& e) {
+            FDC = true;
+            cout << "Fin de cadena en el nodo ";
+        }
     }while (FDC == false);
     cout << nodo << endl;
 }
