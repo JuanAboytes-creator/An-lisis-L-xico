@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cctype>
 #include <vector>
+#include  <string>
+
 using namespace std;
 
 string cadena;
@@ -36,40 +38,40 @@ void mostrarError(int codigoError) {
     switch(codigoError) {
         case 1001: cout << "Error 1001: Caracter invalido"; break;
         case 1002: cout << "Error 1002: Cadena vacia"; break;
-        case 1003: cout << "Error 1003: Se esperaba un Numero, pero se obtuvo una letra"; break;
-        case 1004: cout << "Error 1004: Se esperaba una letra, numero o '_', pero se obtuvo un simbolo simple"; break;
-        case 1005: cout << "Error 1005: Se esperaba un numero, '.' o exponencial, pero se obtuvo una letra"; break;
-        case 1006: cout << "Error 1006: Se esperaba un numero o '+', pero se obtuvo una letra"; break;
-        case 1007: cout << "Error 1007: Se esperaba un exponencial o un numero, pero se obtuvo una letra"; break;
-        case 1008: cout << "Error 1008: Se esperaba un numero, '+', o '-', pero se obtuvo una letra"; break;
-        case 1009: cout << "Error 1009: Se esperaba '&', pero se obtuvo una letra"; break;
+        case 1003: cout << "Error 1003: Se esperaba un Numero"; break;
+        case 1004: cout << "Error 1004: Se esperaba una letra, numero o '_'"; break;
+        case 1005: cout << "Error 1005: Se esperaba un numero, '.' o exponencial"; break;
+        case 1006: cout << "Error 1006: Se esperaba un numero o '+'"; break;
+        case 1007: cout << "Error 1007: Se esperaba un exponencial o un numero"; break;
+        case 1008: cout << "Error 1008: Se esperaba un numero, '+', o '-'"; break;
+        case 1009: cout << "Error 1009: Se esperaba '&'"; break;
         case 1010: cout << "Error 1010: Simbolo invalido por si solo."; break;
-        case 1011: cout << "Error 1011: Se esperaba '-' o un numero, pero se obtuvo una letra"; break;
-        case 1012: cout << "Error 1012: Se esperaba FDC para el simbolo '++', pero se obtuvo una letra"; break;
-        case 1013: cout << "Error 1013: Se esperaba FDC para el simbolo '- -', pero se obtuvo una letra"; break;
-        case 1014: cout << "Error 1014: Se esperaba FDC para el simbolo '&&', pero se obtuvo una letra"; break;
-        case 1015: cout << "Error 1015: Se esperaba '|', pero se obtuvo una letra"; break;
+        case 1011: cout << "Error 1011: Se esperaba '-' o un numero"; break;
+        case 1012: cout << "Error 1012: Se esperaba FDC para el simbolo '++'"; break;
+        case 1013: cout << "Error 1013: Se esperaba FDC para el simbolo '- -'"; break;
+        case 1014: cout << "Error 1014: Se esperaba FDC para el simbolo '&&'"; break;
+        case 1015: cout << "Error 1015: Se esperaba '|'"; break;
         case 1016: cout << "Error 1016: Simbolo '|' invalido por si solo."; break;
-        case 1017: cout << "Error 1017: Se esperaba FDC para el simbolo '||', pero se obtuvo una letra"; break;
-        case 1018: cout << "Error 1018: Se esperaba '/', pero se obtuvo una letra"; break;
-        case 1019: cout << "Error 1019: Se esperaba FDC para el simbolo '//', pero se obtuvo una letra"; break;
-        case 1020: cout << "Error 1020: Caracter invalido despues de simbolo simple, pero se obtuvo una letra"; break;
-        case 1021: cout << "Error 1021: Se esperaba FDC para obtener una cadena, pero se obtuvo una letra"; break;
-        case 1022: cout << "Error 1022: Se esperaba '>' o '=', pero se obtuvo una letra"; break;
-        case 1023: cout << "Error 1023: Se esperaba FDC para el simbolo '<=', pero se obtuvo una letra"; break;
-        case 1024: cout << "Error 1024: Se esperaba FDC para el simbolo '<>', pero se obtuvo una letra"; break;
-        case 1025: cout << "Error 1025: Se esperaba '=', pero se obtuvo una letra"; break;
-        case 1026: cout << "Error 1026: Se esperaba FDC para el simbolo '>=', pero se obtuvo una letra"; break;
-        case 1027: cout << "Error 1027: Se esperaba FDC para el simbolo '==', pero se obtuvo una letra"; break;
-        case 1028: cout << "Error 1028: Se esperaba FDC o un numero para obtener un numero cientifico, pero se obtuvo una letra"; break;
-        case 1029: cout << "Error 1029: Se esperaba un Numero, pero se obtuvo un simbolo simple"; break;
-        case 1030: cout << "Error 1030: Se esperaba un numero, '.' o exponencial, pero se obtuvo un simbolo simple"; break;
-        case 1031: cout << "Error 1031: Se esperaba un numero o '+', pero se obtuvo un simbolo simple"; break;
-        case 1032: cout << "Error 1032: Se esperaba un exponencial o un numero, pero se obtuvo un simbolo simple"; break;
-        case 1033: cout << "Error 1033: Se esperaba un numero, '+', o '-', pero se obtuvo un simbolo simple"; break;
-        case 1034: cout << "Error 1034: Se esperaba '&', pero se obtuvo un numero"; break;
-        case 1035: cout << "Error 1035: Se esperaba '&', pero se obtuvo un simbolo simple"; break;
-        case 1036: cout << "Error 1036: Se esperaba '-' o un numero, pero se obtuvo un simbolo simple"; break;
+        case 1017: cout << "Error 1017: Se esperaba FDC para el simbolo '||'"; break;
+        case 1018: cout << "Error 1018: Se esperaba '/'"; break;
+        case 1019: cout << "Error 1019: Se esperaba FDC para el simbolo '//'"; break;
+        case 1020: cout << "Error 1020: Caracter invalido despues de simbolo simple"; break;
+        case 1021: cout << "Error 1021: Se esperaba FDC para obtener una cadena"; break;
+        case 1022: cout << "Error 1022: Se esperaba '>' o '='"; break;
+        case 1023: cout << "Error 1023: Se esperaba FDC para el simbolo '<='"; break;
+        case 1024: cout << "Error 1024: Se esperaba FDC para el simbolo '<>'"; break;
+        case 1025: cout << "Error 1025: Se esperaba '='"; break;
+        case 1026: cout << "Error 1026: Se esperaba FDC para el simbolo '>='"; break;
+        case 1027: cout << "Error 1027: Se esperaba FDC para el simbolo '=='"; break;
+        case 1028: cout << "Error 1028: Se esperaba FDC o un numero para obtener un numero cientifico"; break;
+        case 1029: cout << "Error 1029: Se esperaba un Numero"; break;
+        case 1030: cout << "Error 1030: Se esperaba un numero, '.' o exponencial"; break;
+        case 1031: cout << "Error 1031: Se esperaba un numero o '+'"; break;
+        case 1032: cout << "Error 1032: Se esperaba un exponencial o un numero"; break;
+        case 1033: cout << "Error 1033: Se esperaba un numero, '+', o '-'"; break;
+        case 1034: cout << "Error 1034: Se esperaba '&'"; break;
+        case 1035: cout << "Error 1035: Se esperaba '&'"; break;
+        case 1036: cout << "Error 1036: Se esperaba '-' o un numero"; break;
         case 1037: cout << "Error 1037: Se esperaba FDC para el simbolo '++', pero se obtuvo un numero"; break;
         case 1038: cout << "Error 1038: Se esperaba FDC para el simbolo '++', pero se obtuvo un simbolo simple"; break;
         case 1039: cout << "Error 1039: Se esperaba FDC para el simbolo '- -', pero se obtuvo un numero"; break;
@@ -103,6 +105,7 @@ void mostrarError(int codigoError) {
         case 1067: cout << "Error 1067: Se esperaba FDC o un numero para obtener un numero cientifico, pero se obtuvo un simbolo simple"; break;
         default: cout << "Error desconocido: " << codigoError; break;
     }
+    cout << ". En el caracter: "<< indice + 1 << endl;
 }
 
 bool buscarLetra() {
@@ -152,8 +155,12 @@ bool buscarEnArreglo(vector<int> arr) {
 int main() {
     while (true) {
         cout << "Inserte cadena: ";
-        cin >> cadena;
+        getline(cin,cadena);
 
+        if (cadena.empty()) {
+            mostrarError(1002);
+            continue;
+        }
         do {
             indice++;
             try {
@@ -405,7 +412,7 @@ int main() {
                 FDC = true;
             }
         }while (FDC == false);
-        cout << endl << nodo << endl;
+        cout << endl;
         if (!error) {
             if (buscarEnArreglo(nodosSignoCompuesto)) {
                 cout << "Es un signo compuesto" << endl;
